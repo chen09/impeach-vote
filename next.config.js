@@ -6,7 +6,9 @@ const nextConfig = {
   // 実験的機能
   experimental: {
     // サーバーアクションを有効化
-    serverActions: true,
+    serverActions: {
+      allowedOrigins: ['vote.impeach.supplynexus.store'],
+    },
   },
   
   // 画像最適化設定
@@ -15,13 +17,6 @@ const nextConfig = {
     domains: ['vote.impeach.supplynexus.store'],
     // 画像最適化を有効化
     unoptimized: false,
-  },
-  
-  // 国際化設定
-  i18n: {
-    locales: ['en', 'zh', 'ja', 'es', 'fr', 'de', 'it', 'pt'],
-    defaultLocale: 'en',
-    localeDetection: true,
   },
   
   // セキュリティヘッダー
