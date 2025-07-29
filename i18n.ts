@@ -1,5 +1,5 @@
-import { notFound } from 'next/navigation'
 import { getRequestConfig } from 'next-intl/server'
+import { notFound } from 'next/navigation'
 
 // サポートする言語
 export const locales = ['en', 'zh', 'ja', 'es', 'pt', 'de', 'fr', 'it'] as const
