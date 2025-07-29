@@ -1,0 +1,73 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "vote": "Votar",
+    "results": "Resultados",
+    "language": "Idioma"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión",
+    "profile": "Perfil",
+    "createPoll": "Crear encuesta",
+    "myPolls": "Mis encuestas"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "confirmPassword": "Confirmar contraseña",
+    "loginSuccess": "Inicio de sesión exitoso",
+    "registerSuccess": "Registro exitoso",
+    "logoutSuccess": "Cierre de sesión exitoso",
+    "invalidCredentials": "Correo electrónico o contraseña incorrectos",
+    "emailExists": "El correo electrónico ya existe",
+    "passwordMismatch": "Las contraseñas no coinciden"
+  },
+  "polls": {
+    "title": "Sistema de votación",
+    "latestPolls": "Últimas encuestas",
+    "createNewPoll": "Crear nueva encuesta",
+    "noPolls": "No hay encuestas disponibles",
+    "pollTitle": "Título de la encuesta",
+    "pollDescription": "Descripción de la encuesta",
+    "pollOptions": "Opciones de la encuesta",
+    "addOption": "Agregar opción",
+    "removeOption": "Eliminar opción",
+    "isPublic": "Encuesta pública",
+    "isPrivate": "Encuesta privada",
+    "createdBy": "Creado por",
+    "votes": "votos",
+    "voteNow": "Votar ahora",
+    "viewResults": "Ver resultados",
+    "createPollSuccess": "Encuesta creada exitosamente",
+    "createPollError": "Error al crear la encuesta",
+    "fetchPollsError": "Error al obtener las encuestas",
+    "voteSuccess": "Voto enviado exitosamente",
+    "voteError": "Error al enviar el voto",
+    "alreadyVoted": "Ya has votado en esta encuesta"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Por favor ingresa un correo electrónico válido",
+    "passwordMin": "La contraseña debe tener al menos 6 caracteres",
+    "titleRequired": "El título es obligatorio",
+    "optionsMin": "Se requieren al menos 2 opciones",
+    "optionRequired": "El texto de la opción es obligatorio"
+  }
+} 

@@ -1,0 +1,73 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "submit": "Absenden",
+    "vote": "Abstimmen",
+    "results": "Ergebnisse",
+    "language": "Sprache"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "profile": "Profil",
+    "createPoll": "Umfrage erstellen",
+    "myPolls": "Meine Umfragen"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "confirmPassword": "Passwort bestätigen",
+    "loginSuccess": "Anmeldung erfolgreich",
+    "registerSuccess": "Registrierung erfolgreich",
+    "logoutSuccess": "Abmeldung erfolgreich",
+    "invalidCredentials": "E-Mail oder Passwort falsch",
+    "emailExists": "E-Mail existiert bereits",
+    "passwordMismatch": "Passwörter stimmen nicht überein"
+  },
+  "polls": {
+    "title": "Abstimmungssystem",
+    "latestPolls": "Neueste Umfragen",
+    "createNewPoll": "Neue Umfrage erstellen",
+    "noPolls": "Keine Umfragen verfügbar",
+    "pollTitle": "Umfragetitel",
+    "pollDescription": "Umfragebeschreibung",
+    "pollOptions": "Umfrageoptionen",
+    "addOption": "Option hinzufügen",
+    "removeOption": "Option entfernen",
+    "isPublic": "Öffentliche Umfrage",
+    "isPrivate": "Private Umfrage",
+    "createdBy": "Erstellt von",
+    "votes": "Stimmen",
+    "voteNow": "Jetzt abstimmen",
+    "viewResults": "Ergebnisse anzeigen",
+    "createPollSuccess": "Umfrage erfolgreich erstellt",
+    "createPollError": "Fehler beim Erstellen der Umfrage",
+    "fetchPollsError": "Fehler beim Abrufen der Umfragen",
+    "voteSuccess": "Stimme erfolgreich abgegeben",
+    "voteError": "Fehler beim Abgeben der Stimme",
+    "alreadyVoted": "Sie haben bereits in dieser Umfrage abgestimmt"
+  },
+  "validation": {
+    "required": "Dieses Feld ist erforderlich",
+    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "passwordMin": "Das Passwort muss mindestens 6 Zeichen lang sein",
+    "titleRequired": "Der Titel ist erforderlich",
+    "optionsMin": "Mindestens 2 Optionen erforderlich",
+    "optionRequired": "Der Optionstext ist erforderlich"
+  }
+} 

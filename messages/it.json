@@ -1,0 +1,73 @@
+{
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "create": "Crea",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "submit": "Invia",
+    "vote": "Vota",
+    "results": "Risultati",
+    "language": "Lingua"
+  },
+  "navigation": {
+    "home": "Home",
+    "login": "Accedi",
+    "register": "Registrati",
+    "logout": "Esci",
+    "profile": "Profilo",
+    "createPoll": "Crea sondaggio",
+    "myPolls": "I miei sondaggi"
+  },
+  "auth": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "name": "Nome",
+    "confirmPassword": "Conferma password",
+    "loginSuccess": "Accesso effettuato con successo",
+    "registerSuccess": "Registrazione effettuata con successo",
+    "logoutSuccess": "Disconnessione effettuata con successo",
+    "invalidCredentials": "Email o password non corretti",
+    "emailExists": "Email già esistente",
+    "passwordMismatch": "Le password non corrispondono"
+  },
+  "polls": {
+    "title": "Sistema di votazione",
+    "latestPolls": "Ultimi sondaggi",
+    "createNewPoll": "Crea nuovo sondaggio",
+    "noPolls": "Nessun sondaggio disponibile",
+    "pollTitle": "Titolo del sondaggio",
+    "pollDescription": "Descrizione del sondaggio",
+    "pollOptions": "Opzioni del sondaggio",
+    "addOption": "Aggiungi opzione",
+    "removeOption": "Rimuovi opzione",
+    "isPublic": "Sondaggio pubblico",
+    "isPrivate": "Sondaggio privato",
+    "createdBy": "Creato da",
+    "votes": "voti",
+    "voteNow": "Vota ora",
+    "viewResults": "Visualizza risultati",
+    "createPollSuccess": "Sondaggio creato con successo",
+    "createPollError": "Errore durante la creazione del sondaggio",
+    "fetchPollsError": "Errore durante il recupero dei sondaggi",
+    "voteSuccess": "Voto inviato con successo",
+    "voteError": "Errore durante l'invio del voto",
+    "alreadyVoted": "Hai già votato in questo sondaggio"
+  },
+  "validation": {
+    "required": "Questo campo è obbligatorio",
+    "email": "Inserisci un indirizzo email valido",
+    "passwordMin": "La password deve contenere almeno 6 caratteri",
+    "titleRequired": "Il titolo è obbligatorio",
+    "optionsMin": "Sono necessarie almeno 2 opzioni",
+    "optionRequired": "Il testo dell'opzione è obbligatorio"
+  }
+} 

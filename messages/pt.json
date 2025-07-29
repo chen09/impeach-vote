@@ -1,0 +1,73 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "submit": "Enviar",
+    "vote": "Votar",
+    "results": "Resultados",
+    "language": "Idioma"
+  },
+  "navigation": {
+    "home": "Início",
+    "login": "Entrar",
+    "register": "Registrar",
+    "logout": "Sair",
+    "profile": "Perfil",
+    "createPoll": "Criar enquete",
+    "myPolls": "Minhas enquetes"
+  },
+  "auth": {
+    "login": "Entrar",
+    "register": "Registrar",
+    "email": "E-mail",
+    "password": "Senha",
+    "name": "Nome",
+    "confirmPassword": "Confirmar senha",
+    "loginSuccess": "Login realizado com sucesso",
+    "registerSuccess": "Registro realizado com sucesso",
+    "logoutSuccess": "Logout realizado com sucesso",
+    "invalidCredentials": "E-mail ou senha incorretos",
+    "emailExists": "E-mail já existe",
+    "passwordMismatch": "Senhas não coincidem"
+  },
+  "polls": {
+    "title": "Sistema de votação",
+    "latestPolls": "Últimas enquetes",
+    "createNewPoll": "Criar nova enquete",
+    "noPolls": "Nenhuma enquete disponível",
+    "pollTitle": "Título da enquete",
+    "pollDescription": "Descrição da enquete",
+    "pollOptions": "Opções da enquete",
+    "addOption": "Adicionar opção",
+    "removeOption": "Remover opção",
+    "isPublic": "Enquete pública",
+    "isPrivate": "Enquete privada",
+    "createdBy": "Criado por",
+    "votes": "votos",
+    "voteNow": "Votar agora",
+    "viewResults": "Ver resultados",
+    "createPollSuccess": "Enquete criada com sucesso",
+    "createPollError": "Erro ao criar enquete",
+    "fetchPollsError": "Erro ao buscar enquetes",
+    "voteSuccess": "Voto enviado com sucesso",
+    "voteError": "Erro ao enviar voto",
+    "alreadyVoted": "Você já votou nesta enquete"
+  },
+  "validation": {
+    "required": "Este campo é obrigatório",
+    "email": "Por favor insira um e-mail válido",
+    "passwordMin": "A senha deve ter pelo menos 6 caracteres",
+    "titleRequired": "O título é obrigatório",
+    "optionsMin": "São necessárias pelo menos 2 opções",
+    "optionRequired": "O texto da opção é obrigatório"
+  }
+} 

@@ -1,0 +1,73 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "vote": "Voter",
+    "results": "Résultats",
+    "language": "Langue"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "login": "Se connecter",
+    "register": "S'inscrire",
+    "logout": "Se déconnecter",
+    "profile": "Profil",
+    "createPoll": "Créer un sondage",
+    "myPolls": "Mes sondages"
+  },
+  "auth": {
+    "login": "Se connecter",
+    "register": "S'inscrire",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "confirmPassword": "Confirmer le mot de passe",
+    "loginSuccess": "Connexion réussie",
+    "registerSuccess": "Inscription réussie",
+    "logoutSuccess": "Déconnexion réussie",
+    "invalidCredentials": "E-mail ou mot de passe incorrect",
+    "emailExists": "L'e-mail existe déjà",
+    "passwordMismatch": "Les mots de passe ne correspondent pas"
+  },
+  "polls": {
+    "title": "Système de vote",
+    "latestPolls": "Derniers sondages",
+    "createNewPoll": "Créer un nouveau sondage",
+    "noPolls": "Aucun sondage disponible",
+    "pollTitle": "Titre du sondage",
+    "pollDescription": "Description du sondage",
+    "pollOptions": "Options du sondage",
+    "addOption": "Ajouter une option",
+    "removeOption": "Supprimer une option",
+    "isPublic": "Sondage public",
+    "isPrivate": "Sondage privé",
+    "createdBy": "Créé par",
+    "votes": "votes",
+    "voteNow": "Voter maintenant",
+    "viewResults": "Voir les résultats",
+    "createPollSuccess": "Sondage créé avec succès",
+    "createPollError": "Erreur lors de la création du sondage",
+    "fetchPollsError": "Erreur lors de la récupération des sondages",
+    "voteSuccess": "Vote soumis avec succès",
+    "voteError": "Erreur lors de la soumission du vote",
+    "alreadyVoted": "Vous avez déjà voté dans ce sondage"
+  },
+  "validation": {
+    "required": "Ce champ est obligatoire",
+    "email": "Veuillez saisir une adresse e-mail valide",
+    "passwordMin": "Le mot de passe doit contenir au moins 6 caractères",
+    "titleRequired": "Le titre est obligatoire",
+    "optionsMin": "Au moins 2 options sont requises",
+    "optionRequired": "Le texte de l'option est obligatoire"
+  }
+} 
