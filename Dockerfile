@@ -19,6 +19,9 @@ COPY . .
 # 環境変数の設定
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Prisma クライアントを生成
+RUN npx prisma generate
+
 # アプリケーションをビルド
 RUN npm run build
 
@@ -38,6 +41,9 @@ COPY --from=builder /app/public ./public
 # 自動的に生成されたスタンドアロン出力をコピー
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Prisma クライアントをコピー
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modules/.prisma
 
 USER nextjs
 
