@@ -2,6 +2,12 @@ import { prisma } from '@/lib/db'
 
 async function getPolls() {
   try {
+    console.log('🔍 データベース接続を確認中...')
+    
+    // データベース接続テスト
+    await prisma.$connect()
+    console.log('✅ データベース接続成功')
+    
     const polls = await prisma.poll.findMany({
       where: {
         isActive: true,
@@ -33,9 +39,25 @@ async function getPolls() {
         createdAt: 'desc',
       },
     })
+    
+    console.log(`📊 ${polls.length}件の投票を取得しました`)
     return polls
   } catch (error) {
-    console.error('Failed to fetch polls:', error)
+    console.error('❌ データベース接続エラー:', error)
+    
+    // エラーの詳細情報をログに出力
+    if (error instanceof Error) {
+      console.error('エラーメッセージ:', error.message)
+      console.error('エラースタック:', error.stack)
+    }
+    
+    // データベース接続を閉じる
+    try {
+      await prisma.$disconnect()
+    } catch (disconnectError) {
+      console.error('データベース切断エラー:', disconnectError)
+    }
+    
     return []
   }
 }
