@@ -47,7 +47,12 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/en',
+        destination: '/en/polls',
+        permanent: false,
+      },
+      {
+        source: '/en',
+        destination: '/en/polls',
         permanent: false,
       },
     ]
