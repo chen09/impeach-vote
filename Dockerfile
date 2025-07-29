@@ -35,8 +35,11 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# ビルドされたアプリケーションをコピー
-COPY --from=builder /app/public ./public
+# public ディレクトリを作成（存在しない場合）
+RUN mkdir -p ./public
+
+# ビルドされたアプリケーションをコピー（存在する場合のみ）
+COPY --from=builder /app/public/* ./public/ 2>/dev/null || true
 
 # 自動的に生成されたスタンドアロン出力をコピー
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
