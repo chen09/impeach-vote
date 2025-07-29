@@ -40,8 +40,16 @@ server {
     proxy_send_timeout 60s;
     proxy_read_timeout 60s;
 
-    # 静的ファイルのキャッシュ設定
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+    # Next.js 静的ファイル（/_next/static/）
+    location /_next/static/ {
+        proxy_pass http://localhost:3000;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        add_header X-Cache-Status "STATIC";
+    }
+
+    # その他の静的ファイル
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
         proxy_pass http://localhost:3000;
         expires 1y;
         add_header Cache-Control "public, immutable";
@@ -63,12 +71,6 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_cache_bypass $http_upgrade;
-        
-        # Next.js の静的ファイル最適化
-        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-            expires 1y;
-            add_header Cache-Control "public, immutable";
-        }
     }
 
     # ヘルスチェック
