@@ -88,7 +88,7 @@ export default function Event2024Page() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl font-bold uppercase tracking-wider mb-4">
-              IMPEACH 2024
+              IMPEACH 2025
             </h1>
             <p className="text-2xl opacity-90 mb-2">
               Presidential Accountability Polls
@@ -173,7 +173,7 @@ export default function Event2024Page() {
         {/* Footer */}
         <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 text-center border border-gray-100">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            IMPEACH Voting System 2024
+            IMPEACH Voting System 2025
           </h3>
           <p className="text-gray-600 mb-2 text-lg">All polls are live and ready for voting</p>
           <p className="text-gray-600 mb-2">Scan QR codes with your phone camera to vote instantly</p>
