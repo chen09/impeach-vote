@@ -10,7 +10,21 @@ export async function GET(
   try {
     const { pollId } = await params
     const { searchParams } = new URL(request.url)
-    const languageId = searchParams.get('languageId') || 'en'
+    const languageCode = searchParams.get('languageId') || 'en'
+    
+    // 言語IDを取得
+    const language = await prisma.language.findFirst({
+      where: { code: languageCode }
+    })
+    
+    if (!language) {
+      return NextResponse.json(
+        { error: 'Language not found' },
+        { status: 400 }
+      )
+    }
+    
+    const languageId = language.id
 
     // hashIdをデコードしてデータベースIDを取得
     const decodedPollId = decodeId(pollId)
@@ -32,7 +46,7 @@ export async function GET(
           include: {
             translations: {
               where: {
-                languageId,
+                languageId: languageId,
               },
             },
             _count: {
@@ -44,7 +58,7 @@ export async function GET(
         },
         translations: {
           where: {
-            languageId,
+            languageId: languageId,
           },
         },
         _count: {

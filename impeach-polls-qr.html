@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPEACH Voting Polls - QR Codes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .polls-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .poll-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .poll-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .poll-number {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .poll-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .poll-url {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #495057;
+            margin-bottom: 20px;
+            word-break: break-all;
+            border-left: 4px solid #ff6b6b;
+        }
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qr-code img {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-vote {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        .btn-vote:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+        }
+        .btn-results {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+        }
+        .btn-results:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(116,185,255,0.4);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .footer p {
+            margin: 5px 0;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .polls-container {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>IMPEACH Voting Polls</h1>
+        <p>Scan QR codes to vote or view results</p>
+    </div>
+
+    <div class="polls-container">
+        <!-- Poll 1: Most Corrupt President -->
+        <div class="poll-card">
+            <div class="poll-number">1</div>
+            <div class="poll-title">WHO IS THE MOST CORRUPT U.S. PRESIDENT?</div>
+            <div class="poll-url">https://vote.impeach.world/poll/qn4mE412</div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vote.impeach.world/poll/qn4mE412" alt="QR Code for Poll 1">
+            </div>
+            <div class="buttons">
+                <a href="https://vote.impeach.world/poll/qn4mE412" class="btn btn-vote" target="_blank">VOTE NOW</a>
+                <a href="https://vote.impeach.world/results/qn4mE412" class="btn btn-results" target="_blank">VIEW RESULTS</a>
+            </div>
+        </div>
+
+        <!-- Poll 2: Least Qualified President -->
+        <div class="poll-card">
+            <div class="poll-number">2</div>
+            <div class="poll-title">WHO WAS THE LEAST QUALIFIED U.S. PRESIDENT?</div>
+            <div class="poll-url">https://vote.impeach.world/poll/pvBGAdJz</div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vote.impeach.world/poll/pvBGAdJz" alt="QR Code for Poll 2">
+            </div>
+            <div class="buttons">
+                <a href="https://vote.impeach.world/poll/pvBGAdJz" class="btn btn-vote" target="_blank">VOTE NOW</a>
+                <a href="https://vote.impeach.world/results/pvBGAdJz" class="btn btn-results" target="_blank">VIEW RESULTS</a>
+            </div>
+        </div>
+
+        <!-- Poll 3: Most Dictatorial President -->
+        <div class="poll-card">
+            <div class="poll-number">3</div>
+            <div class="poll-title">WHO IS THE MOST DICTATORIAL U.S. PRESIDENT?</div>
+            <div class="poll-url">https://vote.impeach.world/poll/kzd0Xdl3</div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vote.impeach.world/poll/kzd0Xdl3" alt="QR Code for Poll 3">
+            </div>
+            <div class="buttons">
+                <a href="https://vote.impeach.world/poll/kzd0Xdl3" class="btn btn-vote" target="_blank">VOTE NOW</a>
+                <a href="https://vote.impeach.world/results/kzd0Xdl3" class="btn btn-results" target="_blank">VIEW RESULTS</a>
+            </div>
+        </div>
+
+        <!-- Poll 4: Most Lying President -->
+        <div class="poll-card">
+            <div class="poll-number">4</div>
+            <div class="poll-title">WHO IS THE MOST LYING U.S. PRESIDENT?</div>
+            <div class="poll-url">https://vote.impeach.world/poll/ZGB9qBK1</div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vote.impeach.world/poll/ZGB9qBK1" alt="QR Code for Poll 4">
+            </div>
+            <div class="buttons">
+                <a href="https://vote.impeach.world/poll/ZGB9qBK1" class="btn btn-vote" target="_blank">VOTE NOW</a>
+                <a href="https://vote.impeach.world/results/ZGB9qBK1" class="btn btn-results" target="_blank">VIEW RESULTS</a>
+            </div>
+        </div>
+
+        <!-- Poll 5: Biggest Russian Spy -->
+        <div class="poll-card">
+            <div class="poll-number">5</div>
+            <div class="poll-title">WHO IS THE BIGGEST RUSSIAN SPY IN U.S. HISTORY?</div>
+            <div class="poll-url">https://vote.impeach.world/poll/9M4Ym48o</div>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://vote.impeach.world/poll/9M4Ym48o" alt="QR Code for Poll 5">
+            </div>
+            <div class="buttons">
+                <a href="https://vote.impeach.world/poll/9M4Ym48o" class="btn btn-vote" target="_blank">VOTE NOW</a>
+                <a href="https://vote.impeach.world/results/9M4Ym48o" class="btn btn-results" target="_blank">VIEW RESULTS</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>IMPEACH Voting System</strong></p>
+        <p>All polls are live and ready for voting</p>
+        <p>Scan QR codes with your phone camera to vote instantly</p>
+        <p>Results update in real-time</p>
+    </div>
+
+    <script>
+        // Add click tracking for analytics
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log('Button clicked:', this.href);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
