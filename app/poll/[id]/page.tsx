@@ -35,15 +35,25 @@ export default function PollPage() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
 
+  console.log('🔍 ページパラメータ:', params)
+
   const fetchPoll = useCallback(async () => {
     try {
+      console.log('🔍 投票データを取得中:', params.id)
       const response = await fetch(`/api/front/polls/${params.id}`)
+      console.log('📊 レスポンス:', response.status)
+      
       if (!response.ok) {
+        const errorText = await response.text()
+        console.error('❌ APIエラー:', errorText)
         throw new Error('Failed to fetch poll')
       }
+      
       const data = await response.json()
+      console.log('✅ 投票データ取得成功:', data.title)
       setPoll(data)
-    } catch {
+    } catch (error) {
+      console.error('❌ 投票取得エラー:', error)
       setError('Failed to fetch poll')
     } finally {
       setLoading(false)
@@ -103,7 +113,7 @@ export default function PollPage() {
     )
   }
 
-  if (error && !poll) {
+  if (error) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -221,7 +231,7 @@ export default function PollPage() {
               {submitting ? 'Submitting...' : 'Vote'}
             </button>
             <Link
-              href={`/results/${poll.id}`}
+              href={`/results/${params.id}`}
               className="flex-1 bg-gray-100 text-gray-700 text-center py-3 px-6 rounded-md hover:bg-gray-200"
             >
               View Results

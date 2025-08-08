@@ -9,7 +9,7 @@ datasource db {
 
 model Language {
   id                 String              @id @default(cuid())
-  code               String              @unique
+  code               String
   name               String
   isActive           Boolean             @default(true)
   createdAt          DateTime            @default(now())
@@ -23,7 +23,7 @@ model Language {
 
 model User {
   id         String    @id @default(cuid())
-  email      String    @unique
+  email      String
   name       String
   password   String
   createdAt  DateTime  @default(now())
@@ -38,7 +38,7 @@ model User {
 }
 
 model Poll {
-  id           String            @id @default(cuid())
+  id           Int               @id @default(autoincrement())
   isActive     Boolean           @default(true)
   isPublic     Boolean           @default(true)
   createdAt    DateTime          @default(now())
@@ -55,10 +55,10 @@ model Poll {
 
 model PollTranslation {
   id          String   @id @default(cuid())
-  pollId      String
+  pollId      Int
   languageId  String
   title       String
-  description String?
+  description String?  @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   language    Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
@@ -71,7 +71,7 @@ model PollTranslation {
 
 model Option {
   id           String              @id @default(cuid())
-  pollId       String
+  pollId       Int
   createdAt    DateTime            @default(now())
   translations OptionTranslation[]
   poll         Poll                @relation(fields: [pollId], references: [id], onDelete: Cascade)
@@ -99,12 +99,12 @@ model OptionTranslation {
 model Vote {
   id        String   @id @default(cuid())
   userId    String?
-  pollId    String
+  pollId    Int
   optionId  String
   createdAt DateTime @default(now())
   option    Option   @relation(fields: [optionId], references: [id], onDelete: Cascade)
   poll      Poll     @relation(fields: [pollId], references: [id], onDelete: Cascade)
-  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id])
 
   @@unique([userId, pollId])
   @@index([optionId], map: "votes_optionId_fkey")

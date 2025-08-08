@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { encodeId } from '@/lib/hashids'
 
 // 公開投票一覧取得API
 export async function GET(request: NextRequest) {
@@ -57,8 +58,14 @@ export async function GET(request: NextRequest) {
       },
     })
 
+    // 各投票にhashIdを追加
+    const pollsWithHashId = polls.map(poll => ({
+      ...poll,
+      hashId: encodeId(Number(poll.id))
+    }))
+
     return NextResponse.json({
-      polls,
+      polls: pollsWithHashId,
       pagination: {
         page,
         limit,

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { createPollSchema } from '@/lib/validation'
 import { verifyToken } from '@/lib/auth'
+import { encodeId } from '@/lib/hashids'
 
 // 投票作成API
 export async function POST(request: NextRequest) {
@@ -60,7 +61,30 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    return NextResponse.json(poll, { status: 201 })
+    // 作成された投票のIDを使用してhashIdを生成
+    const hashId = encodeId(Number(poll.id))
+    
+    // hashIdを更新
+    const updatedPoll = await prisma.poll.update({
+      where: { id: Number(poll.id) },
+      data: { hashId },
+      include: {
+        options: {
+          include: {
+            translations: true,
+          },
+        },
+        translations: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    })
+
+    return NextResponse.json(updatedPoll, { status: 201 })
   } catch (error) {
     console.error('投票作成エラー:', error)
     return NextResponse.json(

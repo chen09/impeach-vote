@@ -1,78 +1,70 @@
-import { prisma } from '@/lib/db'
+'use client'
 
-async function getPolls() {
-  try {
-    console.log('🔍 データベース接続を確認中...')
-    
-    // データベース接続テスト
-    await prisma.$connect()
-    console.log('✅ データベース接続成功')
-    
-    const polls = await prisma.poll.findMany({
-      where: {
-        isActive: true,
-        isPublic: true,
-      },
-      include: {
-        user: {
-          select: {
-            name: true,
-          },
-        },
-        translations: {
-          include: {
-            language: true,
-          },
-        },
-        options: {
-          include: {
-            translations: true,
-          },
-        },
-        _count: {
-          select: {
-            votes: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-    })
-    
-    console.log(`📊 ${polls.length}件の投票を取得しました`)
-    return polls
-  } catch (error) {
-    console.error('❌ データベース接続エラー:', error)
-    
-    // エラーの詳細情報をログに出力
-    if (error instanceof Error) {
-      console.error('エラーメッセージ:', error.message)
-      console.error('エラースタック:', error.stack)
-    }
-    
-    // データベース接続を閉じる
-    try {
-      await prisma.$disconnect()
-    } catch (disconnectError) {
-      console.error('データベース切断エラー:', disconnectError)
-    }
-    
-    return []
+import { useState, useEffect } from 'react'
+
+interface Poll {
+  id: number
+  hashId: string
+  title: string
+  description?: string
+  user: {
+    name: string
+  }
+  _count: {
+    votes: number
   }
 }
 
-export default async function PollsPage() {
-  const polls = await getPolls()
+export default function PollsPage() {
+  const [polls, setPolls] = useState<Poll[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
 
-  const getPollTitle = (poll: any) => {
-    const englishTranslation = poll.translations.find((t: any) => t.language.code === 'en')
-    return englishTranslation?.title || 'Untitled Poll'
+  useEffect(() => {
+    async function fetchPolls() {
+      try {
+        console.log('🔍 APIから投票データを取得中...')
+        
+        const response = await fetch('/api/front/polls')
+        
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.status}`)
+        }
+        
+        const data = await response.json()
+        console.log(`📊 ${data.polls.length}件の投票を取得しました`)
+        setPolls(data.polls)
+      } catch (error) {
+        console.error('❌ API取得エラー:', error)
+        setError('Failed to fetch polls')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPolls()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading polls...</p>
+        </div>
+      </div>
+    )
   }
 
-  const getPollDescription = (poll: any) => {
-    const englishTranslation = poll.translations.find((t: any) => t.language.code === 'en')
-    return englishTranslation?.description
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
+          <p className="text-gray-600 mb-4">{error}</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -118,22 +110,22 @@ export default async function PollsPage() {
           <div className="text-center py-12">
             <p className="text-gray-500">No polls available</p>
             <p className="text-sm text-gray-400 mt-2">
-              Database connection: Failed
+              No polls found
             </p>
           </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {polls.map((poll: any) => (
+            {polls.map((poll) => (
               <div
                 key={poll.id}
                 className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
               >
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {getPollTitle(poll)}
+                  {poll.title}
                 </h3>
-                {getPollDescription(poll) && (
+                {poll.description && (
                   <p className="text-gray-600 mb-4 line-clamp-2">
-                    {getPollDescription(poll)}
+                    {poll.description}
                   </p>
                 )}
                 <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
@@ -142,13 +134,13 @@ export default async function PollsPage() {
                 </div>
                 <div className="flex space-x-2">
                   <a
-                    href={`/poll/${poll.id}`}
+                    href={`/poll/${poll.hashId}`}
                     className="flex-1 bg-blue-600 text-white text-center py-2 px-4 rounded-md hover:bg-blue-700"
                   >
                     Vote Now
                   </a>
                   <a
-                    href={`/results/${poll.id}`}
+                    href={`/results/${poll.hashId}`}
                     className="flex-1 bg-gray-100 text-gray-700 text-center py-2 px-4 rounded-md hover:bg-gray-200"
                   >
                     View Results

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { decodeId } from '@/lib/hashids'
 
 // 投票結果取得API
 export async function GET(
@@ -11,10 +12,19 @@ export async function GET(
     const { searchParams } = new URL(request.url)
     const languageId = searchParams.get('languageId') || 'en'
 
+    // hashIdをデコードしてデータベースIDを取得
+    const decodedPollId = decodeId(pollId)
+    if (!decodedPollId) {
+      return NextResponse.json(
+        { error: '無効な投票IDです' },
+        { status: 400 }
+      )
+    }
+
     // 投票情報取得
     const poll = await prisma.poll.findUnique({
       where: { 
-        id: pollId,
+        id: decodedPollId,
         isPublic: true,
       },
       include: {

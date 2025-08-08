@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { decodeId } from '@/lib/hashids'
 
 // 公開投票詳細取得API
 export async function GET(
@@ -8,9 +9,24 @@ export async function GET(
 ) {
   try {
     const { id } = await params
+    console.log(`🔍 API呼び出し: hashId=${id}`)
+    
+    // hashIdをデコードしてデータベースIDを取得
+    const pollId = decodeId(id)
+    console.log(`🔓 デコード結果: pollId=${pollId} (型: ${typeof pollId})`)
+    
+    if (!pollId) {
+      console.log('❌ 無効な投票ID')
+      return NextResponse.json(
+        { error: '無効な投票IDです' },
+        { status: 400 }
+      )
+    }
+    
+    console.log(`🔍 データベース検索: id=${pollId}`)
     const poll = await prisma.poll.findUnique({
       where: { 
-        id,
+        id: pollId,
         isPublic: true,
         isActive: true,
       },
@@ -49,12 +65,14 @@ export async function GET(
     })
 
     if (!poll) {
+      console.log('❌ 投票が見つかりません')
       return NextResponse.json(
         { error: '投票が見つかりません' },
         { status: 404 }
       )
     }
 
+    console.log('✅ 投票取得成功')
     // 英語の翻訳を取得
     const englishTranslation = poll.translations.find((t: any) => t.language.code === 'en')
     const title = englishTranslation?.title || 'Untitled Poll'
